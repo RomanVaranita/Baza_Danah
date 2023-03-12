@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 public class Main {
-  public static void main(String[] args) {
+
     // - файл Main
     // - взаимоотношения классов
     // - циклы
@@ -38,7 +38,7 @@ public class Main {
         System.out.println("Введите артикул: ");
         String article = br.readLine();
         // проверяем на уникальность
-        while (itemsBase.containsKey(article)) {
+        while (itemBase.containsKey(article)) {
           System.out.println("Артикул не уникален!");
           System.out.println("Введите артикул: ");
           article = br.readLine();
@@ -54,14 +54,13 @@ public class Main {
 
         Money itemPrice = new Money(price, currency);
         Item item = new Item(article, title, itemPrice);
-        itemsBase.put(article, item);
+        itemBase.put(article, item);
       }
 
       // перебираем "значения" из базы данных товаров - то есть все товары в базе
       // в каждом товаре и так хранится его артикул
-      for (Item item : itemsBase.values()) {
+      for (Item item : itemBase.values()) {
         System.out.println(item.getItemString());
       }
     }
   }
-}
